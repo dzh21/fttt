@@ -25,12 +25,14 @@ class PersonModelTest(TestCase):
 
         self.assertEquals(first_person_in_db.name, person.name)
         self.assertEquals(first_person_in_db.surname, person.surname)
-        self.assertEquals(first_person_in_db.date_of_birth, person.date_of_birth)
+        self.assertEquals(first_person_in_db.date_of_birth,
+            person.date_of_birth)
         self.assertEquals(first_person_in_db.bio, person.bio)
         self.assertEquals(first_person_in_db.email, person.email)
         self.assertEquals(first_person_in_db.jabber, person.jabber)
         self.assertEquals(first_person_in_db.skype, person.skype)
-        self.assertEquals(first_person_in_db.other_contacts, person.other_contacts)
+        self.assertEquals(first_person_in_db.other_contacts,
+            person.other_contacts)
 
 
 

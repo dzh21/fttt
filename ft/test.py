@@ -29,5 +29,34 @@ class AdminTest(LiveServerTestCase):
         self.assertIn('Site administration', body.text)
 
         persons_links = self.browser.find_elements_by_link_text('Persons')
-        self.assertEquals(len(persons_links), 2)
+        self.assertEquals(len(persons_links), 1)
+
+        persons_links[0].click()
+        body = self.browser.find_element_by_tag_name('body')
+        self.assertIn('Persons', body.text)
+
+        new_person_link = self.browser.find_element_by_link_text('Add person')
+        new_person_link.click()
+
+        body = self.browser.find_element_by_tag_name('body')
+        self.assertIn('Name:', body.text)
+
+        self.browser.find_element_by_name('name').send_keys('Vasya')
+        self.browser.find_element_by_name('surname').send_keys('Pupkin')
+        self.browser.find_element_by_name('date_of_birth'). \
+            send_keys('1983-12-31')
+        self.browser.find_element_by_name('bio'). \
+            send_keys('Hi. My bio is too poor...')
+        self.browser.find_element_by_name('email').send_keys('Pupkin@gmail.com')
+        self.browser.find_element_by_name('jabber'). \
+            send_keys('Pupkin@jabber.com')
+        self.browser.find_element_by_name('skype').send_keys('Pupkin')
+        self.browser.find_element_by_name('other_contacts'). \
+            send_keys('phone: none')
+
+        self.browser.find_element_by_css_selector("input[value='Save']").click()
+
+        body = self.browser.find_element_by_tag_name('body')
+        self.assertIn('Vasya Pupkin', body.text)
+
 

@@ -11,4 +11,8 @@ class Person(models.Model):
     skype = models.CharField(max_length=50)
     other_contacts = models.TextField()
 
+    def __unicode__(self):
+        return self.name + ' ' + self.surname
+
+
 
