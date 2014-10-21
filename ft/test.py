@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from django.test import LiveServerTestCase
 
 
-class AdminTest(LiveServerTestCase):
+class PersonTest(LiveServerTestCase):
     fixtures = ['initial_data.json']
 
     def setUp(self):
@@ -59,4 +59,8 @@ class AdminTest(LiveServerTestCase):
         body = self.browser.find_element_by_tag_name('body')
         self.assertIn('Vasya Pupkin', body.text)
 
+    def test_home_page(self):
+        self.browser.get(self.live_server_url)
+        heading = self.browser.find_element_by_tag_name('h1')
+        self.assertEquals('42 Coffee Cups Test Assignment', heading.text)
 
