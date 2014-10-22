@@ -35,4 +35,10 @@ class PersonModelTest(TestCase):
             person.other_contacts)
 
 
+class ViewTest(TestCase):
+    def test_root_url(self):
+        response = self.client.get('/')
+        self.assertEquals(response.status_code, 200)
+
+        self.assertTemplateUsed(response, 'home.html')
 

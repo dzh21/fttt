@@ -15,7 +15,7 @@ class PersonTest(LiveServerTestCase):
         self.browser.close()
 
     def test_admin_site(self):
-        self.browser.get('http://127.0.0.1:8081' + '/admin/')
+        self.browser.get(self.live_server_url + '/admin/')
         body = self.browser.find_element_by_tag_name('body')
         self.assertIn('Django administration', body.text)
 
@@ -47,14 +47,16 @@ class PersonTest(LiveServerTestCase):
             send_keys('1983-12-31')
         self.browser.find_element_by_name('bio'). \
             send_keys('Hi. My bio is too poor...')
-        self.browser.find_element_by_name('email').send_keys('Pupkin@gmail.com')
+        self.browser.find_element_by_name('email'). \
+            send_keys('Pupkin@gmail.com')
         self.browser.find_element_by_name('jabber'). \
             send_keys('Pupkin@jabber.com')
         self.browser.find_element_by_name('skype').send_keys('Pupkin')
         self.browser.find_element_by_name('other_contacts'). \
             send_keys('phone: none')
 
-        self.browser.find_element_by_css_selector("input[value='Save']").click()
+        self.browser.find_element_by_css_selector("input[value='Save']"). \
+            click()
 
         body = self.browser.find_element_by_tag_name('body')
         self.assertIn('Vasya Pupkin', body.text)
@@ -63,4 +65,5 @@ class PersonTest(LiveServerTestCase):
         self.browser.get(self.live_server_url)
         heading = self.browser.find_element_by_tag_name('h1')
         self.assertEquals('42 Coffee Cups Test Assignment', heading.text)
+
 
