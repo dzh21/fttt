@@ -37,8 +37,23 @@ class PersonModelTest(TestCase):
 
 class ViewTest(TestCase):
     def test_root_url(self):
+        person = Person()
+        person.name = "Evhen"
+        person.surname = "Davliud"
+        person.date_of_birth = "1983-07-21"
+        person.bio = """
+            I was born in Lubetch Chernigov region Ukrain.
+        """
+        person.email = "dzh21@tut.by"
+        person.jabber = "dzh@default.rs"
+        person.skype = "dzha21"
+        person.other_contacts = "phone +375297602862"
+        person.save()
+
         response = self.client.get('/')
         self.assertEquals(response.status_code, 200)
 
         self.assertTemplateUsed(response, 'home.html')
 
+        person_in_context = response.context['person']
+        self.assertEquals(person_in_context, person)

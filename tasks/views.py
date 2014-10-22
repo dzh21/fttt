@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from tasks.models import Person
 
 
 def index(request):
-    return render(request, "home.html")
+    context = {'person': Person.objects.all()[0]}
+    return render(request, "home.html", context)

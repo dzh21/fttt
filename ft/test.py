@@ -14,7 +14,7 @@ class PersonTest(LiveServerTestCase):
     def tearDown(self):
         self.browser.close()
 
-    def test_admin_site(self):
+    def _test_admin_site(self):
         self.browser.get(self.live_server_url + '/admin/')
         body = self.browser.find_element_by_tag_name('body')
         self.assertIn('Django administration', body.text)
@@ -63,7 +63,13 @@ class PersonTest(LiveServerTestCase):
 
     def test_home_page(self):
         self.browser.get(self.live_server_url)
-        heading = self.browser.find_element_by_tag_name('h1')
+
+        heading = self.browser.find_element_by_tag_name('h3')
         self.assertEquals('42 Coffee Cups Test Assignment', heading.text)
+
+        body = self.browser.find_element_by_tag_name('body')
+        self.assertIn('Evhen', body.text)
+        self.assertIn('Davliud', body.text)
+        self.assertIn('dzh21@tut.by', body.text)
 
 
