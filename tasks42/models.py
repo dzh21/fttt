@@ -15,4 +15,10 @@ class Person(models.Model):
         return self.name + ' ' + self.surname
 
 
+class RequestStr(models.Model):
+    desc = models.TextField()
+
+    def __unicode__(self):
+        return "HttpRequest object"
+
 
