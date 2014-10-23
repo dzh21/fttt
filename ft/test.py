@@ -110,8 +110,13 @@ class PersonTest(LiveServerTestCase):
     def test_requests_page(self):
         self.browser.get(self.live_server_url + '/requests/')
 
-        heading = self.browser.find_element_by_tag_name('h3')
+        heading = self.browser.find_element_by_tag_name('h4')
         self.assertIn('Requests', heading.text)
+
+        list_of_requests = self.browser.find_elements_by_tag_name('li')
+        self.assertEquals(len(list_of_requests) > 0, True)
+
+
 
 
 

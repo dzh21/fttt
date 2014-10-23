@@ -16,4 +16,9 @@ class Person(models.Model):
 
 
 class RequestStr(models.Model):
-    pass
+    desc = models.TextField()
+
+    def __unicode__(self):
+        return "HttpRequest object"
+
+
