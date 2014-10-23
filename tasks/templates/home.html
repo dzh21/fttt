@@ -2,20 +2,20 @@
 {% block content %}
       <div class="row">
         <div class="col-lg-6">
-          <h4>{{ person.name }}</h4>
-          <h4>{{ person.surname }}</h4>
-          <h4>{{ person.date_of_birth }}</h4>
+          <h4>{{ persons.0.name }}</h4>
+          <h4>{{ persons.0.surname }}</h4>
+          <h4>{{ persons.0.date_of_birth }}</h4>
           <h4>Bio:</h4>
-          <p>{{ person.bio }}</p>
+          <p>{{ persons.0.bio }}</p>
         </div>
 
         <div class="col-lg-6">
           <h4>Contacts:</h4>
-          <h4>Email: {{ person.email }}</h4>
-          <h4>Jabber: {{ person.jabber }}</h4>
-          <h4>Skype: {{ person.skype }}</h4>
+          <h4>Email: {{ persons.0.email }}</h4>
+          <h4>Jabber: {{ persons.0.jabber }}</h4>
+          <h4>Skype: {{ persons.0.skype }}</h4>
           <h4>Other contacts:</h4>
-          <p>{{ person.other_contacts }}</p>
+          <p>{{ persons.0.other_contacts }}</p>
         </div>
       </div>
 {% endblock %}
