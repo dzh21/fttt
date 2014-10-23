@@ -8,5 +8,5 @@ def index(request):
 
 
 def requests(request):
-    context = {'requests': list(RequestStr.objects.all())[-10:]}
+    context = {'requests': RequestStr.objects.all()[:10]}
     return render(request, "requests.html", context)
