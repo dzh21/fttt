@@ -19,6 +19,6 @@ class RequestStr(models.Model):
     desc = models.TextField()
 
     def __unicode__(self):
-        return "HttpRequest object"
+        return "Request #%d" % self.id
 
 
