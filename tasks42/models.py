@@ -15,4 +15,5 @@ class Person(models.Model):
         return self.name + ' ' + self.surname
 
 
-
+class RequestStr(models.Model):
+    pass
