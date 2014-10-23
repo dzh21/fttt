@@ -9,6 +9,6 @@ urlpatterns = patterns('',
     # url(r'^$', 'fttt.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', include('tasks.urls')),
+    url(r'^$', include('tasks42.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
