@@ -113,8 +113,10 @@ class PersonTest(LiveServerTestCase):
         heading = self.browser.find_element_by_tag_name('h4')
         self.assertIn('Requests', heading.text)
 
-        list_of_requests = self.browser.find_elements_by_tag_name('li')
-        self.assertEquals(len(list_of_requests) > 0, True)
+        requests_elems = self.browser.find_elements_by_partial_link_text(
+            "Request #"
+        )
+        self.assertEquals(len(requests_elems) > 0, True)
 
 
 
