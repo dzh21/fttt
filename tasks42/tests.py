@@ -2,23 +2,26 @@ from django.test import TestCase
 from tasks42.models import Person
 from datetime import date
 
-PERSON1 = Person(
-    name="Frodo",
-    surname="Baggins",
-    date_of_birth=date(1983, 1, 1),
-    bio="Hello. My name is Frodo. I was born in...",
-    email="frodo@gmail.com",
-    jabber="frodo@default.rs",
-    skype="frodo",
-    other_contacts="phone: +375291111111",
-)
+
+class Test():
+
+    Person1 = Person(
+        name="Frodo",
+        surname="Baggins",
+        date_of_birth=date(1983, 1, 1),
+        bio="Hello. My name is Frodo. I was born in...",
+        email="frodo@gmail.com",
+        jabber="frodo@default.rs",
+        skype="frodo",
+        other_contacts="phone: +375291111111",
+    )
 
 
-class PersonModelTest(TestCase):
+class PersonModelTest(Test, TestCase):
 
     def setUp(self):
         self.person_count = Person.objects.all().count()
-        self.person = PERSON1
+        self.person = self.Person1
         self.person.save()
 
     def test_creating_a_new_person_and_saving_it(self):
@@ -40,10 +43,10 @@ class PersonModelTest(TestCase):
             self.person.other_contacts)
 
 
-class ViewTest(TestCase):
+class PersonViewTest(Test, TestCase):
 
     def setUp(self):
-        self.person = PERSON1
+        self.person = self.Person1
         self.person.save()
 
     def test_root_url(self):
