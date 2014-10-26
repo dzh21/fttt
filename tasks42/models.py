@@ -13,15 +13,4 @@ class Person(models.Model):
 
     def __unicode__(self):
         return self.name + ' ' + self.surname
-<<<<<<< HEAD
 
-
-class RequestStr(models.Model):
-    desc = models.TextField()
-
-    def __unicode__(self):
-        return "Request #%d" % self.id
-
-
-=======
->>>>>>> t1_contact

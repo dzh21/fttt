@@ -1,5 +1,5 @@
 from django.test import TestCase
-from tasks42.models import Person, RequestStr
+from tasks42.models import Person
 from datetime import date
 
 
@@ -59,39 +59,6 @@ class PersonViewTest(TestCase):
         self.assertTemplateUsed(response, 'home.html')
 
         persons_in_context = response.context['persons']
-<<<<<<< HEAD
-        self.assertEquals(list(persons_in_context)[-1], self.person)
-
-
-class RequestModelTest(TestCase):
-
-    def setUp(self):
-        self.req = RequestStr()
-        self.req.desc = 'http blablabla'
-        self.req.save()
-
-    def test_creating_a_new_request_and_save_it(self):
-        request_in_db = RequestStr.objects.all()
-        self.assertEquals(len(request_in_db), 1)
-        self.assertEquals(list(request_in_db)[0], self.req)
-
-
-class RequestStrViewTest(TestCase):
-
-    def setUp(self):
-        self.req = RequestStr()
-        self.req.desc = 'http blablabla'
-        self.req.save()
-
-    def test_requests_url(self):
-        response = self.client.get('/requests/')
-        self.assertEquals(response.status_code, 200)
-
-        self.assertTemplateUsed(response, 'requests.html')
-
-        requests_in_context = response.context['requests']
-        self.assertEquals(requests_in_context[0], self.req)
-=======
 
         self.assertEquals(persons_in_context[0].name, self.me.name)
         self.assertEquals(persons_in_context[0].surname, self.me.surname)
@@ -119,4 +86,3 @@ class RequestStrViewTest(TestCase):
         self.assertIn(self.me.jabber, response.content)
         self.assertIn(self.me.skype, response.content)
         self.assertIn(self.me.other_contacts, response.content)
->>>>>>> t1_contact

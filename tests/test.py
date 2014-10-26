@@ -14,7 +14,7 @@ class PersonTest(LiveServerTestCase):
     def tearDown(self):
         self.browser.close()
 
-    def _test_home_page(self):
+    def test_home_page(self):
         self.browser.get(self.live_server_url)
 
         heading = self.browser.find_element_by_tag_name('h3')
@@ -25,7 +25,7 @@ class PersonTest(LiveServerTestCase):
         self.assertIn('Davliud', body.text)
         self.assertIn('dzh21@tut.by', body.text)
 
-    def _test_admin_site_for_person(self):
+    def test_admin_site_for_person(self):
         self.browser.get(self.live_server_url + '/admin/')
         body = self.browser.find_element_by_tag_name('body')
         self.assertIn('Django administration', body.text)
@@ -71,53 +71,6 @@ class PersonTest(LiveServerTestCase):
 
         body = self.browser.find_element_by_tag_name('body')
         self.assertIn('Vasya Pupkin', body.text)
-
-    def _test_admin_site_for_requests(self):
-        self.browser.get(self.live_server_url + '/admin/')
-        body = self.browser.find_element_by_tag_name('body')
-        self.assertIn('Django administration', body.text)
-
-        username_field = self.browser.find_element_by_name('username')
-        username_field.send_keys('admin')
-        password_field = self.browser.find_element_by_name('password')
-        password_field.send_keys('admin')
-        password_field.send_keys(Keys.RETURN)
-
-        body = self.browser.find_element_by_tag_name('body')
-        self.assertIn('Site administration', body.text)
-
-        requests_links = self.browser.find_elements_by_link_text('Reqests')
-        self.assertEquals(len(requests_links), 1)
-
-        requests_links[0].click()
-        body = self.browser.find_element_by_tag_name('body')
-        self.assertIn('Requests', body.text)
-
-        new_person_link = self.browser.find_element_by_link_text('Add request')
-        new_person_link.click()
-
-        body = self.browser.find_element_by_tag_name('body')
-        self.assertIn('Request:', body.text)
-
-        self.browser.find_elemnt_by_name('request').send_keys('request 1')
-
-        self.browser.find_element_by_css_selector("input[value='Save']"). \
-            click()
-
-        body = self.browser.find_element_by_tag_name('body')
-        self.assertIn('request __unicode__', body.text)
-
-    def test_requests_page(self):
-        self.browser.get(self.live_server_url + '/requests/')
-
-        heading = self.browser.find_element_by_tag_name('h4')
-        self.assertIn('Requests', heading.text)
-
-        requests_elems = self.browser.find_elements_by_partial_link_text(
-            "Request #"
-        )
-        self.assertEquals(len(requests_elems) > 0, True)
-
 
 
 
