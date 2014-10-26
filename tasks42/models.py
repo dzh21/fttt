@@ -13,6 +13,7 @@ class Person(models.Model):
 
     def __unicode__(self):
         return self.name + ' ' + self.surname
+<<<<<<< HEAD
 
 
 class RequestStr(models.Model):
@@ -22,3 +23,5 @@ class RequestStr(models.Model):
         return "Request #%d" % self.id
 
 
+=======
+>>>>>>> t1_contact

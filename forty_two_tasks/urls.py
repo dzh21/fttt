@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'fttt.views.home', name='home'),
+    # url(r'^$', 'forty_two_tasks.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', include('tasks42.urls')),

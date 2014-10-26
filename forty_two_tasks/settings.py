@@ -1,5 +1,5 @@
 """
-Django settings for fttt project.
+Django settings for forty_two_tasks project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -49,9 +49,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'fttt.urls'
+ROOT_URLCONF = 'forty_two_tasks.urls'
 
-WSGI_APPLICATION = 'fttt.wsgi.application'
+WSGI_APPLICATION = 'forty_two_tasks.wsgi.application'
 
 
 # Database
@@ -88,4 +88,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
-

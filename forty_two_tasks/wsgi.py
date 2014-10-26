@@ -1,5 +1,5 @@
 """
-WSGI config for fttt project.
+WSGI config for forty_two_tasks project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 """
 
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fttt.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "forty_two_tasks.settings")
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
