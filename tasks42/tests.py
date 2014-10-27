@@ -3,7 +3,7 @@ from tasks42.models import Person
 from datetime import date
 
 
-class PersonViewTest(TestCase):
+class MainViewTest(TestCase):
 
     def setUp(self):
         self.me = Person(
@@ -56,4 +56,16 @@ class PersonViewTest(TestCase):
         self.assertIn('requests', response.content)
         response = self.client.get('/requests/')
         self.assertEquals(response.status_code, 200)
+
+
+class RequestsViewTest(TestCase):
+
+    def test_requests_link(self):
+        response = self.client.get('/requests/')
+        self.assertEquals(response.status_code, 200)
+
+        self.assertTemplateUsed(response, 'requests.html')
+
+        requests_in_context = response.context['requests']
+        self.assertEquals(len(list(requests_in_context)) > 0, True)
 

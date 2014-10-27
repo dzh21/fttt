@@ -14,3 +14,7 @@ class Person(models.Model):
     def __unicode__(self):
         return self.name + ' ' + self.surname
 
+
+class RequestObject(models.Model):
+    pass
+
