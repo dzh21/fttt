@@ -16,5 +16,8 @@ class Person(models.Model):
 
 
 class RequestObject(models.Model):
-    pass
+    desc = models.TextField()
+
+    def __unicode__(self):
+        return "Request #" + self.id
 

@@ -66,6 +66,10 @@ class RequestsViewTest(TestCase):
 
         self.assertTemplateUsed(response, 'requests.html')
 
+        # context
         requests_in_context = response.context['requests']
         self.assertEquals(len(list(requests_in_context)) > 0, True)
+
+        # content
+        self.assertIn('Request #', response.content)
 
