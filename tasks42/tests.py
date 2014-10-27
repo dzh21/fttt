@@ -51,3 +51,9 @@ class PersonViewTest(TestCase):
         self.assertIn(self.me.jabber, response.content)
         self.assertIn(self.me.skype, response.content)
         self.assertIn(self.me.other_contacts, response.content)
+
+        # test requests link
+        self.assertIn('requests', response.content)
+        response = self.client.get('/requests/')
+        self.assertEquals(response.status_code, 200)
+
