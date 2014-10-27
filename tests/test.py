@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from django.test import LiveServerTestCase
 
 
-class PersonTest(LiveServerTestCase):
+class Tasks42Test(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -14,18 +14,7 @@ class PersonTest(LiveServerTestCase):
     def tearDown(self):
         self.browser.close()
 
-    def test_home_page(self):
-        self.browser.get(self.live_server_url)
-
-        heading = self.browser.find_element_by_tag_name('h3')
-        self.assertEquals('42 Coffee Cups Test Assignment', heading.text)
-
-        body = self.browser.find_element_by_tag_name('body')
-        self.assertIn('Evhen', body.text)
-        self.assertIn('Davliud', body.text)
-        self.assertIn('dzh21@tut.by', body.text)
-
-    def test_admin_site_for_person(self):
+    def _test_admin_site_for_person(self):
         self.browser.get(self.live_server_url + '/admin/')
         body = self.browser.find_element_by_tag_name('body')
         self.assertIn('Django administration', body.text)
@@ -72,6 +61,30 @@ class PersonTest(LiveServerTestCase):
         body = self.browser.find_element_by_tag_name('body')
         self.assertIn('Vasya Pupkin', body.text)
 
+    def test_home_page(self):
+        self.browser.get(self.live_server_url)
 
+        heading = self.browser.find_element_by_tag_name('h3')
+        self.assertEquals('42 Coffee Cups Test Assignment', heading.text)
+
+        body = self.browser.find_element_by_tag_name('body')
+        self.assertIn('Evhen', body.text)
+        self.assertIn('Davliud', body.text)
+        self.assertIn('dzh21@tut.by', body.text)
+
+        self.browser.find_element_by_link_text('requests').click()
+        body = self.browser.find_element_by_tag_name('body')
+        self.assertIn('Request #', body.text)
+
+    def test_requests_page(self):
+        self.browser.get(self.live_server_url + '/requests/')
+
+        heading = self.browser.find_element_by_tag_name('h4')
+        self.assertIn('Requests', heading.text)
+
+        requests_elems = self.browser.find_elements_by_partial_link_text(
+            "Request #"
+        )
+        self.assertEquals(len(requests_elems) > 0, True)
 
 
