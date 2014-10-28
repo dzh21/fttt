@@ -4,7 +4,7 @@ from datetime import date
 
 
 class MainViewTest(TestCase):
-    fixtures = ['initial_data.json']
+    #fixtures = ['initial_data.json']
 
     def setUp(self):
         self.me = Person(
