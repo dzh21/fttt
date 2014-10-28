@@ -61,7 +61,7 @@ class Tasks42Test(LiveServerTestCase):
         body = self.browser.find_element_by_tag_name('body')
         self.assertIn('Vasya Pupkin', body.text)
 
-    def test_home_page(self):
+    def _test_home_page(self):
         self.browser.get(self.live_server_url)
 
         heading = self.browser.find_element_by_tag_name('h3')
@@ -76,7 +76,7 @@ class Tasks42Test(LiveServerTestCase):
         body = self.browser.find_element_by_tag_name('body')
         self.assertIn('Request #', body.text)
 
-    def test_requests_page(self):
+    def _test_requests_page(self):
         self.browser.get(self.live_server_url + '/requests/')
 
         heading = self.browser.find_element_by_tag_name('h4')
@@ -87,4 +87,26 @@ class Tasks42Test(LiveServerTestCase):
         )
         self.assertEquals(len(requests_elems) > 0, True)
 
+    def test_admin_requests_page(self):
+        self.browser.get(self.live_server_url + '/admin/')
+        body = self.browser.find_element_by_tag_name('body')
+        self.assertIn('Django administration', body.text)
 
+        username_field = self.browser.find_element_by_name('username')
+        username_field.send_keys('admin')
+        password_field = self.browser.find_element_by_name('password')
+        password_field.send_keys('admin')
+        password_field.send_keys(Keys.RETURN)
+
+        body = self.browser.find_element_by_tag_name('body')
+        self.assertIn('Site administration', body.text)
+
+        persons_links = self.browser.find_elements_by_link_text(
+            'Request objects'
+        )
+        self.assertEquals(len(persons_links), 1)
+
+        persons_links[0].click()
+        body = self.browser.find_element_by_tag_name('body')
+        self.assertIn('Request #', body.text)
+        self.assertIn('Save date time', body.text)

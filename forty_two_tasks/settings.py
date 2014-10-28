@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'south',
     'tasks42',
 )
 
@@ -76,6 +77,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+DATETIME_FORMAT = '%d.%m.%Y %H:%i:%s'
 
 
 # Static files (CSS, JavaScript, Images)
