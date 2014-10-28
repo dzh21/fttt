@@ -18,7 +18,7 @@ class Person(models.Model):
 
 class RequestObject(models.Model):
     desc = models.TextField()
-    save_date_time = models.DateTimeField(default=datetime.now())
+    save_date_time = models.DateTimeField(auto_now=True)
     remote_address = models.CharField(max_length=20)
 
     def __unicode__(self):
