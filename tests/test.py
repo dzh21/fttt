@@ -5,6 +5,7 @@ from django.test import LiveServerTestCase
 
 
 class Tasks42Test(LiveServerTestCase):
+    fixtures = ['initial_data.json']
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -108,5 +109,5 @@ class Tasks42Test(LiveServerTestCase):
 
         persons_links[0].click()
         body = self.browser.find_element_by_tag_name('body')
-        self.assertIn('Request #', body.text)
+        self.assertIn('Remote address', body.text)
         self.assertIn('Save date time', body.text)
