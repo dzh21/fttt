@@ -19,5 +19,5 @@ class RequestObject(models.Model):
     desc = models.TextField()
 
     def __unicode__(self):
-        return "Request #" + self.id
+        return "Request #" + str(self.id)
 

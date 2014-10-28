@@ -2,6 +2,8 @@ from django.test import TestCase
 from tasks42.models import Person
 from datetime import date
 
+from .mw import SaveHttpRequest
+from django.http import HttpRequest
 
 class MainViewTest(TestCase):
 
@@ -72,4 +74,3 @@ class RequestsViewTest(TestCase):
 
         # content
         self.assertIn('Request #', response.content)
-
