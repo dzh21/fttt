@@ -5,7 +5,7 @@ from django.test import LiveServerTestCase
 
 
 class Tasks42Test(LiveServerTestCase):
-    #fixtures = ['initial_data.json']
+    fixtures = ['initial_data.json']
 
     def setUp(self):
         self.browser = webdriver.Firefox()
