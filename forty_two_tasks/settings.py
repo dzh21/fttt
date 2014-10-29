@@ -41,13 +41,13 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'tasks42.mw.SaveHttpRequest',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'tasks42.mw.SaveHttpRequest',
 )
 
 ROOT_URLCONF = 'forty_two_tasks.urls'
