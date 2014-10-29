@@ -26,6 +26,8 @@ class Migration(SchemaMigration):
         db.create_table(u'tasks42_requestobject', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('desc', self.gf('django.db.models.fields.TextField')()),
+            ('save_date_time', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
+            ('remote_address', self.gf('django.db.models.fields.CharField')(default='localhost', max_length=20)),
         ))
         db.send_create_signal(u'tasks42', ['RequestObject'])
 
@@ -54,7 +56,9 @@ class Migration(SchemaMigration):
         u'tasks42.requestobject': {
             'Meta': {'object_name': 'RequestObject'},
             'desc': ('django.db.models.fields.TextField', [], {}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'remote_address': ('django.db.models.fields.CharField', [], {'default': "'localhost'", 'max_length': '20'}),
+            'save_date_time': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'})
         }
     }
 
