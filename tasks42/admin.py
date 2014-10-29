@@ -5,7 +5,8 @@ admin.site.register(Person)
 
 
 class RequestObjectAdmin(admin.ModelAdmin):
-    list_display = ('id', 'save_date_time', 'remote_address', )
+    pass
+    #list_display = ('id', 'save_date_time', 'remote_address', )
     #date_hierarhy = ('save_date_time',)
 
 admin.site.register(RequestObject, RequestObjectAdmin)
