@@ -110,4 +110,4 @@ class Tasks42Test(LiveServerTestCase):
         persons_links[0].click()
         body = self.browser.find_element_by_tag_name('body')
         self.assertIn('Remote address', body.text)
-        self.assertIn('Event date time', body.text)
+        self.assertIn('Save date time', body.text)
