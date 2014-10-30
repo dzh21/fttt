@@ -5,6 +5,6 @@ admin.site.register(Person)
 
 
 class RequestObjectAdmin(admin.ModelAdmin):
-    list_display = ('id', 'event_date_time', 'remote_address', )
+    list_display = ('id', 'save_date_time', 'remote_address', )
 
 admin.site.register(RequestObject, RequestObjectAdmin)
