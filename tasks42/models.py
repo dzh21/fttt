@@ -18,7 +18,7 @@ class Person(models.Model):
 
 class RequestObject(models.Model):
     desc = models.TextField()
-    save_date_time = models.DateTimeField(default=timezone.now)
+    event_date_time = models.DateTimeField(default=timezone.now())
     remote_address = models.CharField(max_length=20, default='localhost')
 
     def __unicode__(self):
