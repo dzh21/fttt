@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Person(models.Model):
@@ -18,7 +19,7 @@ class Person(models.Model):
 class RequestObject(models.Model):
     desc = models.TextField()
     remote_address = models.CharField(max_length=20, default='localhost')
-    save_date_time = models.DateTimeField()
+    save_date_time = models.DateTimeField(default=timezone.now())
 
     def __unicode__(self):
         return "Request #" + str(self.id)
